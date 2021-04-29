@@ -31,6 +31,8 @@ export class HeaderLanguageMenuComponent extends AppComponentBase
       (l) => !l.isDisabled
     );
     this.currentLanguage = this.localization.currentLanguage;
+
+    console.log(this.localization.languages)
   }
 
   changeLanguage(languageName: string): void {

@@ -80,7 +80,7 @@ export class AppInitializer {
   private shouldLoadLocale(): boolean {
     return (
       abp.localization.currentLanguage.name &&
-      abp.localization.currentLanguage.name !== 'en-US'
+      abp.localization.currentLanguage.name !== 'en-DO'
     );
   }
 

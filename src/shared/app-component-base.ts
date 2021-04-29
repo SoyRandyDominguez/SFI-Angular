@@ -39,6 +39,8 @@ export abstract class AppComponentBase {
     }
 
     l(key: string, ...args: any[]): string {
+
+        
         let localizedText = this.localization.localize(key, this.localizationSourceName);
 
         if (!localizedText) {
@@ -50,6 +52,9 @@ export abstract class AppComponentBase {
         }
 
         args.unshift(localizedText);
+        console.log(key);
+        console.log(localizedText);
+        console.log(abp.utils.formatString.apply(this, args));
         return abp.utils.formatString.apply(this, args);
     }
 

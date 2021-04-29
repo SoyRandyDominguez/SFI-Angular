@@ -63,7 +63,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   ): void {
     request.keyword = this.keyword;
     request.isActive = this.isActive;
-
+   
     this._userService
       .getAll(
         request.keyword,

@@ -38,6 +38,9 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { ArticleTypesComponent } from './article-types/article-types.component';
+import { CreateArticleTypeComponent } from './article-types/create-article-type/create-article-type.component';
+import { EditArticleTypeComponent } from './article-types/edit-article-type/edit-article-type.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    ArticleTypesComponent,
+    CreateArticleTypeComponent,
+    EditArticleTypeComponent
   ],
   imports: [
     CommonModule,
@@ -96,6 +102,9 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
+    // ArticleType
+    CreateArticleTypeComponent,
+    EditArticleTypeComponent
   ],
 })
 export class AppModule {}
