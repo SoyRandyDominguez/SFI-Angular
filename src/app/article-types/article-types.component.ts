@@ -1,15 +1,15 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { ArticleTypeDto, ArticleTypeDtoPagedResultDto } from './article-typeDto';
-
-
-
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { finalize } from 'rxjs/operators';
 import { ArticleTypeService } from '@shared/service-proxies/service-proxies';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { finalize } from 'rxjs/operators';
+import { ArticleTypeDto, ArticleTypeDtoPagedResultDto } from './article-typeDto';
 import { CreateArticleTypeComponent } from './create-article-type/create-article-type.component';
 import { EditArticleTypeComponent } from './edit-article-type/edit-article-type.component';
+
+
+
 
 class PagedArticleTypeRequestDto extends PagedRequestDto {
   keyword: string;
@@ -67,7 +67,7 @@ export class ArticleTypesComponent extends PagedListingComponentBase<ArticleType
 
   protected delete(articletype: ArticleTypeDto): void {
     abp.message.confirm(
-      this.l('UserDeleteWarningMessage', articletype.name),
+      this.l('DeleteWarningMessage', articletype.name),
       undefined,
       (result: boolean) => {
         if (result) {

@@ -41,6 +41,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { ArticleTypesComponent } from './article-types/article-types.component';
 import { CreateArticleTypeComponent } from './article-types/create-article-type/create-article-type.component';
 import { EditArticleTypeComponent } from './article-types/edit-article-type/edit-article-type.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { EditArticleTypeComponent } from './article-types/edit-article-type/edit
     SidebarMenuComponent,
     ArticleTypesComponent,
     CreateArticleTypeComponent,
-    EditArticleTypeComponent
+    EditArticleTypeComponent,
+    ArticleComponent
   ],
   imports: [
     CommonModule,
