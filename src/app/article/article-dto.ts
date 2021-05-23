@@ -1,5 +1,6 @@
 import { ArticleTypeDto } from "@app/article-types/article-typeDto";
 
+import * as moment from 'moment';
 export interface IArticleDto {
     description: string | undefined;
     purchasePrice: number;
@@ -7,6 +8,19 @@ export interface IArticleDto {
     stockMax: number;
     articleType: ArticleTypeDto;
     id: number;
+
+    tax:number;
+    salePrice1:number;
+    salePrice2:number;
+    salePrice3:number;
+    amount:number;
+    observations:string;
+    admissionDate: moment.Moment | undefined;
+    image:string;
+    location:string;
+    supplierName1:string | null;
+    supplierName2:string | null;
+    supplierName3:string | null;
 }
 
 export class ArticleDto implements IArticleDto {
@@ -14,8 +28,22 @@ export class ArticleDto implements IArticleDto {
     purchasePrice: number;
     stockMin: number;
     stockMax: number;
-    articleType: ArticleTypeDto;
+    articleType: ArticleTypeDto = new ArticleTypeDto();
     id: number;
+
+    tax:number;
+    salePrice1:number;
+    salePrice2:number;
+    salePrice3:number;
+    amount:number;
+    observations:string;
+    admissionDate: moment.Moment | undefined;
+    image:string;
+    location:string;
+
+    supplierName1:string | null;
+    supplierName2:string | null;
+    supplierName3:string | null;
 
     constructor(data?: IArticleDto) {
         if (data) {
@@ -34,6 +62,19 @@ export class ArticleDto implements IArticleDto {
             this.stockMax = data["stockMax"];
             this.articleType = data["articleType"];
             this.id = data["id"];
+            this.tax = data["tax"];
+            this.salePrice1 = data["salePrice1"];
+            this.salePrice2 = data["salePrice2"];
+            this.salePrice3 = data["salePrice3"];
+            this.amount = data["amount"];
+            this.observations = data["observations"];
+            this.admissionDate = data["admissionDate"];
+            this.image = data["image"];
+            this.location = data["location"];
+
+            this.supplierName1 = data["supplierName1"];
+            this.supplierName2 = data["supplierName2"];
+            this.supplierName3 = data["supplierName3"];
         }
     }
     static fromJS(data: any): ArticleDto {
@@ -49,8 +90,23 @@ export class ArticleDto implements IArticleDto {
         data["purchasePrice"] = this.purchasePrice;
         data["stockMin"] = this.stockMin;
         data["stockMax"] = this.stockMax;
-        data["articleTypeId"] = this.articleType;
+        data["articleType"] = this.articleType;
         data["id"] = this.id;
+
+        data["tax"] = this.tax;
+        data["salePrice1"] = this.salePrice1;
+        data["salePrice2"] = this.salePrice2;
+        data["salePrice3"] = this.salePrice3;
+        data["amount"] = this.amount;
+        data["observations"] = this.observations;
+        data["admissionDate"] = this.admissionDate;
+        data["image"] = this.image;
+        data["location"] = this.location;
+
+        data["supplierName1"] = this.supplierName1;
+        data["supplierName2"] = this.supplierName2;
+        data["supplierName3"] = this.supplierName3;
+        
         return data; 
     }
 

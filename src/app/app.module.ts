@@ -42,6 +42,8 @@ import { ArticleTypesComponent } from './article-types/article-types.component';
 import { CreateArticleTypeComponent } from './article-types/create-article-type/create-article-type.component';
 import { EditArticleTypeComponent } from './article-types/edit-article-type/edit-article-type.component';
 import { ArticleComponent } from './article/article.component';
+import { CreateArticleComponent } from './article/create-article/create-article.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { ArticleComponent } from './article/article.component';
     ArticleTypesComponent,
     CreateArticleTypeComponent,
     EditArticleTypeComponent,
-    ArticleComponent
+    ArticleComponent,
+    CreateArticleComponent,
+    EditArticleComponent
   ],
   imports: [
     CommonModule,
@@ -106,7 +110,10 @@ import { ArticleComponent } from './article/article.component';
     ResetPasswordDialogComponent,
     // ArticleType
     CreateArticleTypeComponent,
-    EditArticleTypeComponent
+    EditArticleTypeComponent,
+    // Article
+    CreateArticleComponent,
+    EditArticleComponent
   ],
 })
 export class AppModule {}

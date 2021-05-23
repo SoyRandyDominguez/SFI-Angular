@@ -79,15 +79,24 @@
                                     <button
                                             type="button"
                                             class="btn btn-sm bg-secondary"
-                                            (click)="editArticle(articletype)"
+                                            (click)="editArticle(article)"
                                     >
                                         <i class="fas fa-pencil-alt"></i>
                                         {{ "Edit" | localize }}
                                     </button>
+                                    
+                                    <button
+                                            type="button"
+                                            class="btn btn-sm bg-info mx-2"
+                                            (click)="viewArticle(article)"
+                                    >
+                                        <i class="fas fa-search"></i>
+                                        {{ "View" | localize }}
+                                    </button>
                                     <button
                                             type="button"
                                             class="btn btn-sm bg-danger mx-2"
-                                            (click)="delete(article)"
+                                            (click)="deleteArticle(article)"
                                     >
                                         <i class="fas fa-trash"></i>
                                         {{ "Delete" | localize }}
@@ -106,7 +115,12 @@
                                 <i class="fas fa-redo-alt"></i>
                             </button>
                         </div>
-                        <div class="col-sm-4 col-12 text-center">
+                        <div class="col-sm-2 col-12 text-center">
+                            
+                            <input type="number" class="form-control mb-0 my-2" name="cantRow" id="cantRow" 
+                             [(ngModel)]="pageSize" (change)="getDataPage(pageNumber)" />
+                        </div>
+                        <div class="col-sm-2 col-12 text-center">
                             <p class="mb-0 my-2">
                                 {{ "TotalRecordsCount" | localize: totalItems }}
                             </p>

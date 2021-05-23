@@ -15,6 +15,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angula
 import * as moment from 'moment';
 import { ArticleTypeDto, ArticleTypeDtoPagedResultDto } from '@app/article-types/article-typeDto';
 import { ArticleDto, ArticleDtoPagedResultDto } from '@app/article/article-dto';
+import { CreateArticle } from '@app/article/create-article/create-article';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
@@ -2051,7 +2052,7 @@ export class ArticleService {
      * @param body (optional) 
      * @return Success
      */
-    create(body: ArticleDto | undefined): Observable<ArticleDto> {
+    create(body: CreateArticle | undefined): Observable<ArticleDto> {
         let url_ = this.baseUrl + "/api/services/app/Article/Create";
         url_ = url_.replace(/[?&]$/, "");
 

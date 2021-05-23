@@ -5,6 +5,8 @@ import { ArticleDto, ArticleDtoPagedResultDto } from './article-dto';
 import { ArticleService } from '@shared/service-proxies/service-proxies';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
+import { CreateArticleComponent } from './create-article/create-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 class PagedArticleRequestDto extends PagedRequestDto {
   keyword: string;
   isActive: boolean | null;
@@ -17,6 +19,11 @@ class PagedArticleRequestDto extends PagedRequestDto {
   animations: [appModuleAnimation()]
 })
 export class ArticleComponent  extends PagedListingComponentBase<ArticleDto> {
+
+  keyword = '';
+  cantRow:number = 5;
+  articles: ArticleDto[] = [];
+
   protected list(request: PagedArticleRequestDto, pageNumber: number, finishedCallback: Function): void {
     request.keyword = this.keyword;
     this._articleService
@@ -32,6 +39,7 @@ export class ArticleComponent  extends PagedListingComponentBase<ArticleDto> {
       )
       .subscribe((result: ArticleDtoPagedResultDto) => {
         this.articles = result.items;
+        console.log(result.items);
         this.showPaging(result, pageNumber);
       });
   }
@@ -41,8 +49,6 @@ export class ArticleComponent  extends PagedListingComponentBase<ArticleDto> {
 
 
  
-  keyword = '';
-  articles: ArticleDto[] = [];
 
 
   constructor(
@@ -51,16 +57,51 @@ export class ArticleComponent  extends PagedListingComponentBase<ArticleDto> {
     private _modalService: BsModalService
   ) {
     super(injector);
+  
   }
 
 
   
+  viewArticle(): void {
+    // this.showCreateOrEditArticleDialog();
+  }
+
+  deleteArticle(): void {
+    // this.showCreateOrEditArticleDialog();
+  }
+
   createArticle(): void {
-    // this.showCreateOrEditArticleTypeDialog();
+    this.showCreateOrEditArticleDialog();
   }
 
-  editArticle(articletype: ArticleDto): void {
-    // this.showCreateOrEditArticleTypeDialog(articletype.id);
+  editArticle(article: ArticleDto): void {
+    this.showCreateOrEditArticleDialog(article.id);
   }
 
+  
+  private showCreateOrEditArticleDialog(id?: number): void {
+    let createOrEditArticleDialog: BsModalRef;
+    if (!id) {
+      createOrEditArticleDialog = this._modalService.show(
+        CreateArticleComponent,
+        {
+          class: 'modal-lg',
+        }
+      );
+    } else {
+      createOrEditArticleDialog = this._modalService.show(
+        EditArticleComponent,
+        {
+          class: 'modal-lg',
+          initialState: {
+            id: id,
+          },
+        }
+      );
+    }
+
+    createOrEditArticleDialog.content.onSave.subscribe(() => {
+      this.refresh();
+    });
+  }
 }

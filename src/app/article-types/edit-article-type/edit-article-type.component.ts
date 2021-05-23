@@ -32,6 +32,7 @@ export class EditArticleTypeComponent extends AppComponentBase  implements OnIni
   ngOnInit(): void {
     this._articleTypeService.get(this.id).subscribe((result) => {
       this.articletype = result;
+    
     });
   }
 
