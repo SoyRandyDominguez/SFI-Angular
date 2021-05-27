@@ -20,7 +20,7 @@ export class PagedRequestDto {
 })
 export abstract class PagedListingComponentBase<TEntityDto> extends AppComponentBase implements OnInit {
 
-    public pageSize = 5;
+    public pageSize = 10;
     public pageNumber = 1;
     public totalPages = 1;
     public totalItems: number;
@@ -38,14 +38,20 @@ export abstract class PagedListingComponentBase<TEntityDto> extends AppComponent
         this.getDataPage(this.pageNumber);
     }
 
-    public showPaging(result: PagedResultDto, pageNumber: number): void {
+    public showPaging(result: PagedResultDto, pageNumber: number, pageSize:number = null): void {
+        if (pageSize != null) {
+            this.pageSize = pageSize;
+        }
         this.totalPages = ((result.totalCount - (result.totalCount % this.pageSize)) / this.pageSize) + 1;
 
         this.totalItems = result.totalCount;
         this.pageNumber = pageNumber;
     }
 
-    public getDataPage(page: number): void {
+    public getDataPage(page: number, pageSize:number = null): void {
+        if (pageSize != null) {
+            this.pageSize = pageSize;
+        }
         const req = new PagedRequestDto();
         req.maxResultCount = this.pageSize;
         req.skipCount = (page - 1) * this.pageSize;
