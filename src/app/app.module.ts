@@ -47,6 +47,7 @@ import { EditArticleComponent } from './article/edit-article/edit-article.compon
 import { CuadresComponent } from './cuadres/cuadres.component';
 import { CreateCuadreComponent } from './cuadres/create-cuadre/create-cuadre.component';
 import { EditCuadreComponent } from './cuadres/edit-cuadre/edit-cuadre.component';
+import { VisitBancaComponent } from './cuadres/visit-banca/visit-banca.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { EditCuadreComponent } from './cuadres/edit-cuadre/edit-cuadre.component
     EditArticleComponent,
     CuadresComponent,
     CreateCuadreComponent,
-    EditCuadreComponent
+    EditCuadreComponent,
+    VisitBancaComponent
   ],
   imports: [
     CommonModule,
@@ -122,7 +124,8 @@ import { EditCuadreComponent } from './cuadres/edit-cuadre/edit-cuadre.component
     EditArticleComponent,
     // cuadre
     CreateCuadreComponent,
-    EditCuadreComponent
+    EditCuadreComponent,
+    VisitBancaComponent
   ],
 })
 export class AppModule {}

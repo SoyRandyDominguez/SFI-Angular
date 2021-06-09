@@ -5,8 +5,8 @@ export interface ICuadreDto {
     porRecoger: number;
     noRecogido: number;
     id: number;
-    banca: ICuadreBancasDto;
-    supervisor: ICuadreSupervisoresDto;
+    banca?: ICuadreBancasDto;
+    supervisor?: ICuadreSupervisoresDto;
     wasVisit: boolean;
     fecha: moment.Moment | undefined;
  
@@ -94,8 +94,8 @@ export class CuadreDto implements ICuadreDto {
     porRecoger: number;
     noRecogido: number;
     id: number;
-    banca: ICuadreBancasDto;
-    supervisor: ICuadreSupervisoresDto;
+    banca?: ICuadreBancasDto;
+    supervisor?: ICuadreSupervisoresDto;
     wasVisit: boolean;
     fecha: moment.Moment;
 

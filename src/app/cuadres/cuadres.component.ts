@@ -8,6 +8,7 @@ import { finalize } from 'rxjs/operators';
 import { CreateCuadreComponent } from './create-cuadre/create-cuadre.component';
 import { CuadreBancasDto, CuadreBancasDtoPagedResultDto, CuadreDto, CuadreDtoPagedResultDto, CuadrePagedRequestDto, ICuadreBancasDto } from './cuadre-dto';
 import { EditCuadreComponent } from './edit-cuadre/edit-cuadre.component';
+import { VisitBancaComponent } from './visit-banca/visit-banca.component';
 
 @Component({
   selector: 'app-cuadres',
@@ -33,6 +34,7 @@ export class CuadresComponent extends PagedListingComponentBase<CuadreDto> {
     console.log(this.bancaNumber)
     console.log(request.bancaId)
     request.wasVisit = this.wasVisit;
+    // request.skipCount = this.pageNumber;  
 
     this._cuadreService
       .getAll(
@@ -79,13 +81,34 @@ export class CuadresComponent extends PagedListingComponentBase<CuadreDto> {
     this.showCreateOrEditCuadreDialog();
   }
 
+  visitBanca(cuadre:CuadreDto):void {
+    this.openVisita(cuadre);
+  }
+
   
   editCuadre(cuadre:CuadreDto):void {
     this.showCreateOrEditCuadreDialog(cuadre.banca.id);
   }
 
   
- 
+  private openVisita(cuadre:CuadreDto): void {
+    let visit: BsModalRef;
+     
+      visit = this._modalService.show(
+        VisitBancaComponent,
+        {
+          class: 'modal-lg',
+          initialState: {
+            cuadre: cuadre,
+          },
+        }
+      );
+    
+
+      visit.content.onSave.subscribe(() => {
+      this.refresh();
+    });
+  }
 
   private showCreateOrEditCuadreDialog(id?: number): void {
     let createOrEditUserDialog: BsModalRef;
