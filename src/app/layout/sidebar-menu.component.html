@@ -14,6 +14,13 @@
 </nav>
 
 <ng-template #sidebarInner let-item="item">
+
+
+  <div *ngIf="item.route==null && item.isDivided" style="font-weight: bold; border-top: 1px solid #4f5962; color: #4f5962;"> 
+    <p style="margin-left: 11px; ">{{item.label}}</p>
+  </div>
+
+
   <li
     *ngIf="isMenuItemVisible(item)"
     class="nav-item"

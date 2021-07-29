@@ -8,14 +8,17 @@ export class MenuItem {
   isActive?: boolean;
   isCollapsed?: boolean;
   children: MenuItem[];
+  isDivided?: boolean;
 
   constructor(
     label: string,
     route: string,
     icon: string,
     permissionName: string = null,
-    children: MenuItem[] = null
+    children: MenuItem[] = null,
+    isDivided?:boolean
   ) {
+    this.isDivided = isDivided;
     this.label = label;
     this.route = route;
     this.icon = icon;
